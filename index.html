@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Tower of hanoi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Ishan Bagchi">
+        <meta name="application-name" content="Tower Of Hanoi">
+        <meta name="description" content="Tower of hanoi game developed with simple html, bootstrap, angularjs">
+        <meta name="keywords" content="mini project,tower of hanoi, minigame">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93355643-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-93355643-1');
+        </script>
+        <link rel="stylesheet" href="resources/lib/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="resources/css/custom.css"/>
+        <link rel="stylesheet" href="resources/lib/font-awesome.min.css"/>
+        <style>
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+              display: none !important;
+            }
+        </style>
+        <script type="text/javascript" src="resources/lib/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="resources/lib/angular.min.js"></script>
+        <script type="text/javascript" src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fill playground" ng-app="demo.home" ng-controller="HomeCtrl" style="padding-top: 10px;" ng-cloak>
+            <div class="row" ng-show="gameStatus=='START'">
+                <div class="col-lg-4 pegs col-md-4 col-sm-4 col-xs-4">
+                    <button ng-click="startGame()">New Game</button>
+                </div>
+                <div class="col-lg-4 pegs col-md-4 col-sm-4 col-xs-4">
+                    <button ng-click="showCredit()">Credits</button>
+                </div>
+            </div>
+            <div class="row full-screen" ng-show="gameStatus=='CREDIT'" ng-click='gotoHome()'>
+                Enter your names
+            </div>
+            <div class="row" ng-show="gameStatus=='GO'">
+                <div class="col-lg-4 pegs col-md-4 col-sm-4 col-xs-4 cursor-pointer" ng-class="source=='A'?'active':''" ng-click="clickPeg('A')">
+                    <div class="col-lg-12 disk" ng-repeat="disk in peg.A track by $index"><div class=" disk{{disk}}" ng-class="disk==-1?($index==0?'top-disk':'no-disk'):''">{{disk}}</div></div>
+                </div>
+                <div class="col-lg-4 pegs col-md-4 col-sm-4 col-xs-4 cursor-pointer" ng-class="source=='B'?'active':''" ng-click="clickPeg('B')">
+                    <div class="col-lg-12 disk" ng-repeat="disk in peg.B track by $index"><div class=" disk{{disk}}" ng-class="disk==-1?($index==0?'top-disk':'no-disk'):''">{{disk}}</div></div>
+                </div>
+                <div class="col-lg-4 pegs col-md-4 col-sm-4 col-xs-4 cursor-pointer"  ng-class="source=='C'?'active':''" ng-click="clickPeg('C')">
+                    <div class="col-lg-12 disk" ng-repeat="disk in peg.C track by $index"><div class=" disk{{disk}}" ng-class="disk==-1?($index==0?'top-disk':'no-disk'):''">{{disk}}</div></div>
+                </div>
+                <div class="col-lg-12 peg-bottom">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><b>A</b></div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><b>B</b></div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><b>C</b></div>
+                    </div>
+                </div>
+                <div class="col-lg-12 ">
+                    <h2>Tower of hanoi</h2>
+                </div>
+            </div>
+            <div class='row game-over-msg' ng-show="gameStatus=='GAME OVER'">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-center">
+                    <span class='game-over-msg'>Game Over</span>
+                </div>  
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-center">
+                    <button ng-click="restartGame()">Restart</button>
+                </div> 
+            </div>
+            <div class='row game-over-msg' ng-show="gameStatus=='WIN'">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-center" ng-show='level!=maxLevel'>
+                    <span class='level-win-msg'>Level Win</span>
+                </div>  
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-center" ng-show='level!=maxLevel'>
+                    <button ng-click="playNextLevel()">Play Next Level</button>
+                </div> 
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-center" ng-show='level==maxLevel'>
+                    <span class='game-win-msg'>Congratulations!<br/>You are winner of the game.</span>
+                </div>  
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-center" ng-show='level==maxLevel'>
+                    <button ng-click="restartGame()">Restart</button>
+                </div> 
+            </div>
+        </div>
+        <script type="text/javascript" src="resources/js/custom/util.js"></script>
+        <script type="text/javascript" src="resources/js/custom/app.js"></script>
+    </body>
+</html>
