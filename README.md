@@ -26,3 +26,5 @@ The project uses the following stack:
 1. Mobile responsive
 2. Replace alert box and confirm box with dramatic screens
 3. Introduce some animations
+
+> Push on the _hackit_ branch
