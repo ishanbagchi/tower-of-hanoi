@@ -21,9 +21,9 @@
     text-align: center;
 }
 
-.pegs:hover{
+/* .pegs:hover{
     
-}
+} */
 
 .cursor-pointer{
     cursor: pointer;
@@ -93,9 +93,9 @@ span.game-win-msg{
     text-align: -moz-center;
     color: transparent;
 }
-.disk-1{
+/* .disk-1{
    
-}
+} */
 .disk1{
     background: #0000FF;
     border-radius: 15px;
