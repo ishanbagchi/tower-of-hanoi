@@ -78,6 +78,12 @@ span.game-win-msg{
     src:url('resources/css/fonts/Amarante-Regular.ttf')
 }
 
+.moves-made {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 'bold';
+}
+
 /*Disk style*/
 .top-disk{
     background: black;
