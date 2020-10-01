@@ -2,13 +2,15 @@
     'use strict';
     angular.module('demo.home',[]).controller('HomeCtrl',['$scope',function($scope){
         $scope.level=0;
-        $scope.message="Hello world";
         $scope.gameStatus="START";
         $scope.maxLevel=15;
         $scope.templatePeg=[];
         $scope.peg={A:[],B:[],C:[]};
         $scope.source='';
         $scope.destination='';
+        $scope.numMoves = 0;
+        $scope.totalMoves = 0;
+
         //Method declaration
         $scope.createTemplatePeg=function(){
             for(var i=0;i<$scope.maxLevel+4;i++){
@@ -50,11 +52,15 @@
         
         $scope.restartGame=function(){
             $scope.level=0;
+            $scope.numMoves = 0;
+            $scope.totalMoves = 0;
             $scope.changeLevel();
             $scope.gameStatus='GO';
         }
         
         $scope.playNextLevel=function(){
+            $scope.totalMoves += $scope.numMoves;
+            $scope.numMoves = 0;
             $scope.changeLevel();
         }
         
@@ -78,6 +84,11 @@
             //Modify destination peg
             $scope.source=$scope.destination='';
             $scope.checkResult();
+
+            $scope.numMoves++;
+            if ($scope.gameStatus === 'GAME OVER') {
+                $scope.totalMoves += $scope.numMoves;
+            }
         }
         
         $scope.clickPeg=function(peg){

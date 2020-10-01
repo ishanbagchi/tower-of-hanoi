@@ -189,10 +189,9 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <h2
-                    style="font-size: 50px; font-weight: bold; font-family: 'Niconne', cursive; text-align: center; margin-top: 25px;">
-                    < Tower of Hanoi />
-                </h2>
+                <p style="color: #000000; font-size: 25px; font-weight: bold">
+                    Moves made: {{numMoves}}
+                </p>
             </div>
         </div>
         <div ng-show="gameStatus=='GAME OVER'" data-toggle="modal" data-target="#exampleModal">
@@ -202,7 +201,7 @@
                         <h5 class="modal-title">Game Over...</h5>
                     </div>
                     <div class="modal-body">
-                        <p>Welp, Nevermind! Wanna try again?</p>
+                        <p>You took a total of {{totalMoves}} moves. Wanna try again?</p>
                     </div>
                     <div class="modal-footer">
                         <a class="btn btn-primary" ng-click="restartGame()" role="button">Yes</a>
@@ -226,7 +225,9 @@
                         <h5 class="modal-title">Level Win...</h5>
                     </div>
                     <div class="modal-body">
-                        <p>Congratulations! Wanna play next level?</p>
+                        <p>
+                            Congratulations! That level took you {{numMoves}} moves to win. Wanna play next level?
+                        </p>
                     </div>
                     <div class="modal-footer">
                         <a class="btn btn-primary" ng-click="playNextLevel()" role="button">Play Next Level</a>
